@@ -192,28 +192,30 @@ export default function defineSkinHooks() {
         } catch (err) { console.warn('[kaze] sweep failed', err); }
       };
 
-      // ── 1) Themed placeholder copy (unchanged behavior) ───────────────
-      const RULES = [
-        { starts: '给智能体发消息', to: '風立ちぬ——让想法随风飘去' },
-        { starts: 'Message the agent', to: '風立ちぬ。いざ生きめやも。' },
-        { starts: '描述你想要构建的内容', to: '風立ちぬ——让想法随风飘去' },
-        { starts: 'Describe what you want to build', to: 'Kaze Tachinu — let your thoughts ride the wind' },
-      ];
+      // ── 1) Themed composer placeholder ───────────────────────────────
+      // The composer is a Lexical editor: [data-composer-input] carries the
+      // placeholder in data-placeholder + aria-label; legacy builds use a
+      // <textarea placeholder>. Pick the copy by UI language (CJK ⇒ zh).
+      const themeCopyFor = (text) => {
+        if (!text) return null;
+        const zh = /[\u4e00-\u9fff]/.test(text);
+        if (/描述你想要构建的内容|Describe what you want to build/i.test(text)) {
+          return zh ? '風立ちぬ——让想法随风飘去' : 'Kaze Tachinu — let your thoughts ride the wind';
+        }
+        return zh ? '風立ちぬ——让想法随风飘去' : '風立ちぬ。いざ生きめやも。';
+      };
       const walkPlaceholders = () => {
-        document.querySelectorAll('textarea').forEach((ta) => {
-          const cur = ta.placeholder;
-          if (!cur) return;
-          for (const rule of RULES) {
-            if (cur.startsWith(rule.starts) && ta.placeholder !== rule.to) {
-              ta.placeholder = rule.to;
-              break;
-            }
-          }
+        document.querySelectorAll('[data-composer-card] [data-composer-input], [data-composer-card] textarea').forEach((el) => {
+          const attr = el.tagName === 'TEXTAREA' ? 'placeholder' : 'data-placeholder';
+          const copy = themeCopyFor(el.getAttribute(attr) || el.getAttribute('aria-label') || '');
+          if (!copy) return;
+          if (el.getAttribute(attr) !== copy) el.setAttribute(attr, copy);
+          if (el.hasAttribute('aria-label') && el.getAttribute('aria-label') !== copy) el.setAttribute('aria-label', copy);
         });
       };
       walkPlaceholders();
       const placeholderObserver = new MutationObserver(walkPlaceholders);
-      placeholderObserver.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['placeholder'] });
+      placeholderObserver.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['placeholder', 'data-placeholder', 'aria-label'] });
 
       // ── 2) Conversation / stats sweep (debounced per frame) ───────────
       let frame = 0;

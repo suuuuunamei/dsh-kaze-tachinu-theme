@@ -19,27 +19,29 @@ return {
     const theme = ctx.get('theme');
     if (theme === undefined) return;
     const patchPlaceholders = () => {
-      const RULES = [
-        { starts: '给智能体发消息', to: '風立ちぬ——让想法随风飘去' },
-        { starts: 'Message the agent', to: '風立ちぬ。いざ生きめやも。' },
-        { starts: '描述你想要构建的内容', to: '風立ちぬ——让想法随风飘去' },
-        { starts: 'Describe what you want to build', to: 'Kaze Tachinu — let your thoughts ride the wind' },
-      ];
+      // The composer is a Lexical editor: [data-composer-input] carries the
+      // placeholder in data-placeholder + aria-label; legacy builds use a
+      // <textarea placeholder>. Choose the copy by UI language (CJK ⇒ zh).
+      const themeCopyFor = (text) => {
+        if (!text) return null;
+        const zh = /[\u4e00-\u9fff]/.test(text);
+        if (/描述你想要构建的内容|Describe what you want to build/i.test(text)) {
+          return zh ? '風立ちぬ——让想法随风飘去' : 'Kaze Tachinu — let your thoughts ride the wind';
+        }
+        return zh ? '風立ちぬ——让想法随风飘去' : '風立ちぬ。いざ生きめやも。';
+      };
       const walk = () => {
-        document.querySelectorAll('textarea').forEach((ta) => {
-          const current = ta.placeholder;
-          if (!current) return;
-          for (const rule of RULES) {
-            if (current.startsWith(rule.starts) && ta.placeholder !== rule.to) {
-              ta.placeholder = rule.to;
-              break;
-            }
-          }
+        document.querySelectorAll('[data-composer-card] [data-composer-input], [data-composer-card] textarea').forEach((el) => {
+          const attr = el.tagName === 'TEXTAREA' ? 'placeholder' : 'data-placeholder';
+          const copy = themeCopyFor(el.getAttribute(attr) || el.getAttribute('aria-label') || '');
+          if (!copy) return;
+          if (el.getAttribute(attr) !== copy) el.setAttribute(attr, copy);
+          if (el.hasAttribute('aria-label') && el.getAttribute('aria-label') !== copy) el.setAttribute('aria-label', copy);
         });
       };
       walk();
       const observer = new MutationObserver(walk);
-      observer.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['placeholder'] });
+      observer.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['placeholder', 'data-placeholder', 'aria-label'] });
       return () => observer.disconnect();
     };
     const disposePlaceholders = patchPlaceholders();
