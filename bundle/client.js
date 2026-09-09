@@ -16,17 +16,21 @@ window.__ModuleLoader__.load({
 
     const apply = (ctx) => {
       const patchPlaceholders = () => {
-        const replacements = {
-          '给智能体发消息': '风起了，要努力活下去。',
-          'Message the agent': '风起了，要努力活下去。',
-          '描述你想要构建的内容': '風立ちぬ——让想法随风飘去',
-          'Describe what you want to build': 'Kaze Tachinu — let your thoughts ride the wind',
-        };
+        const RULES = [
+          { starts: '给智能体发消息', to: '风起了，要努力活下去。' },
+          { starts: 'Message the agent', to: '风起了，要努力活下去。' },
+          { starts: '描述你想要构建的内容', to: '風立ちぬ——让想法随风飘去' },
+          { starts: 'Describe what you want to build', to: '風立ちぬ——让想法随风飘去' },
+        ];
         const walk = () => {
           document.querySelectorAll('textarea').forEach((ta) => {
             const current = ta.placeholder;
-            if (current && replacements[current] !== undefined && ta.placeholder !== replacements[current]) {
-              ta.placeholder = replacements[current];
+            if (!current) return;
+            for (const rule of RULES) {
+              if (current.startsWith(rule.starts) && ta.placeholder !== rule.to) {
+                ta.placeholder = rule.to;
+                break;
+              }
             }
           });
         };
