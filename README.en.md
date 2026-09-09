@@ -16,7 +16,7 @@
 
 <p align="center">
   <strong>A <em>The Wind Rises</em> (風立ちぬ, Kaze Tachinu) theme by Hayao Miyazaki / Studio Ghibli for the DeepSeek Harness (DSH) Web GUI</strong><br>
-  <em>Sky-blue glassmorphism · Cinematic sky wallpaper · Original vector logos · Composer re-skin · Unified scrollbars · One-command install</em>
+  <em>Sky-blue glassmorphism · Cinematic sky wallpaper · Composer re-skin · Unified scrollbars · One-command install</em>
 </p>
 
 <div align="center">
@@ -27,7 +27,7 @@
 
 ## What it is
 
-dsh-kaze-tachinu-theme turns the DSH Web GUI into Miyazaki's *The Wind Rises*: a cinematic sky wallpaper (an aeroplane climbing through sunlit clouds) behind every surface, translucent frosted-glass panels, sky-blue (`#1C96B5`) as the single interaction color, an original red-wing logo with a "The Wind Rises" wordmark in place of the DSH brand, a navy-glass composer card, and the placeholder copy swapped for themed film lines.
+dsh-kaze-tachinu-theme turns the DSH Web GUI into Miyazaki's *The Wind Rises*: a cinematic sky wallpaper (an aeroplane climbing through sunlit clouds) behind every surface, translucent frosted-glass panels, sky-blue (`#1C96B5`) as the single interaction color, a navy-glass composer card, and the placeholder copy swapped for themed film lines.
 
 It is a standard dsh plugin package: one `dsh plugin` command installs it into the profile, it stays resident with DSH at startup, no DSH source is modified, and uninstalling fully restores the page.
 
@@ -35,7 +35,7 @@ It is a standard dsh plugin package: one `dsh plugin` command installs it into t
 | --- | --- | --- |
 | Background | Solid / solid gradient | Cinematic sky wallpaper + global blur scrim |
 | Surfaces | Opaque layers | Translucent frosted glass (backdrop-filter) |
-| Brand | DSH default | Original red-wing logo (expanded + collapsed) |
+| Brand | DSH default | DSH default |
 | Composer | Default | Sky-navy glass capsule, themed placeholder copy |
 | Scrollbars | Default | Unified sky-blue glass thin scrollbars |
 | Message list bottom | Hard edge | 40px gradient fade-out mask |
@@ -52,11 +52,11 @@ It is a standard dsh plugin package: one `dsh plugin` command installs it into t
 
 The theme layers ~60 design-token overrides on top of the official `theme.overrideTokens` API: background layers become translucent (revealing the wallpaper), borders become low-saturation sky-blue strokes, interaction states (hover/active/selected) unify on the sky-blue family, and status colors (error/success/warning) are tuned to sit well on dark glass. Light and dark mode share the same visual — glass over a wallpaper does not distinguish between them. The full token list lives in [docs/theme-tokens.md](docs/theme-tokens.md).
 
-### Wallpaper & logos
+### Wallpaper
 
 - The wallpaper is served by the plugin host half at `/kaze-tachinu/current.jpg` (`assets/current.jpg` inside the package), with a subtle dark gradient overlay for text legibility;
-- The expanded sidebar shows the horizontal logo (red-wing aeroplane + "The Wind Rises" wordmark), the collapsed rail shows a paper-plane letter mark (both SVGs are original vector artwork drawn for this repo and served via the plugin routes);
-- The home (hero) headline is replaced by a large centered logo.
+
+
 
 <p align="center">
   <img src="docs/screenshots/sidebar.png" alt="Sidebar: expanded brand" width="123">
@@ -102,7 +102,7 @@ Or install directly from GitHub:
 dsh plugin --profile web add github:Snamei/dsh-kaze-tachinu-theme
 ```
 
-The wallpaper appearing and the sidebar logo changing means success. The theme stays resident with DSH after install — no need to reinstall each time.
+The wallpaper appearing and the glass/sky-blue accents applying means success. The theme stays resident with DSH after install — no need to reinstall each time.
 
 ### Update
 
@@ -126,7 +126,7 @@ dsh web   # the page fully reverts after restart
 
 If you use the dsh-web-ui skin center, the theme can also be installed as a skin package: copy the repository's `skin/kaze-tachinu/` directory to `~/.dsh/skins/kaze-tachinu/` and refresh — it appears in Settings -> Skin Center with try-on / one-click switch / mutual exclusion.
 
-> Note: manually placed skins lack the `hooks.mjs` behavioral enhancements (placeholder copy, scroll companions) because of the skin center's provenance gate — wallpaper, colors, logos and glass styles are all intact visually; installing through dsh-market enables the full feature set. Choose either the plugin or the skin way.
+> Note: manually placed skins lack the `hooks.mjs` behavioral enhancements (placeholder copy, scroll companions) because of the skin center's provenance gate — wallpaper, colors and glass styles are all intact visually; installing through dsh-market enables the full feature set. Choose either the plugin or the skin way.
 
 ## Customize
 
@@ -142,9 +142,9 @@ dsh web
 
 Replace `assets/current.jpg` in the clone (keep the filename), hard-refresh the browser (Ctrl+F5).
 
-### Logos
+### Wallpaper
 
-Replace the two SVGs under `assets/logo/`, hard-refresh to apply.
+Replacing `assets/current.jpg` applies after a hard refresh (see Wallpaper).
 
 ### Colors
 
@@ -158,7 +158,7 @@ The theme is a standard dsh plugin package (bundle): `package.json` declares `ds
 bundle/host.js       # plugin host half (Node): 3 asset routes /kaze-tachinu/* (package-relative paths, work from any install location)
 bundle/client.js     # plugin browser half: token overrides + component styles + DOM patches
 cordis.patch.yml     # plugin-row manifest mounted by dsh plugin add
-assets/              # wallpaper and logos (original vector artwork)
+assets/              # wallpaper
 plugin/              # same-source closure for in-session dynamic injection (advanced; usually not needed)
 skin/kaze-tachinu/   # skin-center package: skin.json v2 + skin.css + patches.css + hooks.mjs
 ```
@@ -175,7 +175,7 @@ A: Make sure the command included `--profile web` (installed into the right prof
 </details>
 
 <details>
-<summary><strong>Wallpaper / logo 404?</strong></summary>
+<summary><strong>Wallpaper 404?</strong></summary>
 
 A: Statically installed assets resolve relative to the package, so this should not happen. It is usually caused by a manually cleaned or broken profile node_modules/link: re-run the install command once to repair.
 
@@ -205,15 +205,15 @@ A: Token layers are additive but visuals overwrite each other. Enable only one t
 ## Known limits
 
 - Glass, scrollbars and the fade mask are polished for the Chromium core (Edge / Chrome); some effects degrade on Firefox — Edge or Chrome recommended.
-- Selectors for the message-scroll rework, sidebar logo swap and composer highlight rely on DSH build-time hash class names and may need following updates after major DSH frontend upgrades (see FAQ).
+- Selectors for the message-scroll rework, composer highlight rely on DSH build-time hash class names and may need following updates after major DSH frontend upgrades (see FAQ).
 - The theme forces a dark-glass visual; light mode is not separately adapted (see FAQ).
-- Wallpaper and logo routes cache for 1 hour — hard-refresh after swapping assets.
+- The wallpaper route caches for 1 hour — hard-refresh after swapping assets.
 
 ## License & asset copyright
 
 Code is licensed under [MIT](LICENSE).
 
-The wallpaper under `assets/` derives from promotional material of the film *The Wind Rises* (風立ちぬ, Kaze Tachinu, 2013); copyright belongs to Studio Ghibli, Nibariki, KDDI, Toho and other rights holders. The logos under `assets/logo/` are original vector artwork drawn for this repository. This repository distributes them solely for personal desktop customization, claims no ownership, and derives no revenue from them; the assets will be removed immediately upon a rights holder's request.
+The wallpaper under `assets/` derives from promotional material of the film *The Wind Rises* (風立ちぬ, Kaze Tachinu, 2013); copyright belongs to Studio Ghibli, Nibariki, KDDI, Toho and other rights holders.  This repository distributes them solely for personal desktop customization, claims no ownership, and derives no revenue from them; the assets will be removed immediately upon a rights holder's request.
 
 ## Contributing
 

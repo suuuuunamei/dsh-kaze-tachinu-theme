@@ -16,7 +16,7 @@
 
 <p align="center">
   <strong>宫崎骏《起风了》（風立ちぬ / The Wind Rises）主题，为 DeepSeek Harness (DSH) Web GUI 而作</strong><br>
-  <em>天蓝玻璃拟态 · 晴空电影壁纸 · 自绘矢量徽标 · 输入卡重绘 · 统一滚动条 · 一条命令安装</em>
+  <em>天蓝玻璃拟态 · 晴空电影壁纸 · 输入卡重绘 · 统一滚动条 · 一条命令安装</em>
 </p>
 
 <div align="center">
@@ -27,7 +27,7 @@
 
 ## 是什么
 
-dsh-kaze-tachinu-theme 把 DSH Web GUI 变成宫崎骏《起风了》的模样：一张飞机飞越云海的晴空电影壁纸垫底，全部界面表面换成半透明毛玻璃，交互色统一为天蓝（`#1C96B5`），侧边栏品牌与首页标题替换为自绘矢量徽标（红翼飞机 + The Wind Rises 字标），输入卡重绘为云海蓝玻璃胶囊，占位文案换成「风起了，要努力活下去。」。
+dsh-kaze-tachinu-theme 把 DSH Web GUI 变成宫崎骏《起风了》的模样：一张飞机飞越云海的晴空电影壁纸垫底，全部界面表面换成半透明毛玻璃，交互色统一为天蓝（`#1C96B5`），输入卡重绘为云海蓝玻璃胶囊，占位文案换成「风起了，要努力活下去。」。
 
 它是一个标准的 dsh 插件包：一条 `dsh plugin` 命令装进 profile，随 DSH 启动常驻，不修改任何 DSH 源码；卸载后页面完全还原。
 
@@ -35,7 +35,7 @@ dsh-kaze-tachinu-theme 把 DSH Web GUI 变成宫崎骏《起风了》的模样�
 | --- | --- | --- |
 | 背景 | 纯色 / 纯色渐变 | 晴空电影壁纸 + 全局模糊遮罩 |
 | 界面表面 | 不透明分层 | 半透明毛玻璃（backdrop-filter） |
-| 品牌标识 | DSH 默认 | 自绘红翼飞机徽标（展开态 + 折叠态） |
+| 品牌标识 | DSH 默认 | DSH 默认 |
 | 输入卡 | 默认样式 | 云海蓝玻璃胶囊，占位文案主题化 |
 | 滚动条 | 默认 | 全局天蓝玻璃细滚动条 |
 | 消息列底部 | 直切 | 40px 渐变淡出蒙版 |
@@ -52,11 +52,11 @@ dsh-kaze-tachinu-theme 把 DSH Web GUI 变成宫崎骏《起风了》的模样�
 
 主题通过官方 `theme.overrideTokens` API 叠加一层约 60 项的 design token 覆盖：背景层全部半透明化（露出壁纸）、边框换成低饱和天蓝描边、交互态（悬停/激活/选中）统一为天蓝系、状态色（错误/成功/警告）微调至与深色玻璃协调。亮色与暗色模式共用同一套视觉——壁纸底上的玻璃拟态本身不区分明暗。完整 token 清单见 [docs/theme-tokens.md](docs/theme-tokens.md)。
 
-### 壁纸与徽标
+### 壁纸
 
 - 壁纸由插件宿主半区以 `/kaze-tachinu/current.jpg` 路由提供（包内 `assets/current.jpg`），叠加一层轻微的深色渐变保证文字可读性；
-- 侧边栏展开态显示横向徽标（红翼飞机 + The Wind Rises 字标），折叠态显示纸飞机字母标记（两个 SVG 均为本仓库自绘原创矢量，由插件路由提供）；
-- 首页（hero）标题替换为居中大尺寸徽标。
+
+
 
 <p align="center">
   <img src="docs/screenshots/sidebar.png" alt="侧边栏：展开态的品牌标识" width="123">
@@ -102,7 +102,7 @@ dsh web   # 重启 DSH 生效
 dsh plugin --profile web add github:Snamei/dsh-kaze-tachinu-theme
 ```
 
-壁纸出现、侧边栏徽标变化，即安装成功。安装后随 DSH 启动常驻，无需每次重装。
+壁纸出现、玻璃与天蓝色生效，即安装成功。安装后随 DSH 启动常驻，无需每次重装。
 
 ### 更新
 
@@ -126,7 +126,7 @@ dsh web   # 重启后页面完全还原
 
 若使用 dsh-web-ui 的皮肤中心（skin-center），可改以皮肤包形式安装：把仓库 `skin/kaze-tachinu/` 整个目录拷到 `~/.dsh/skins/kaze-tachinu/`，刷新页面即出现在「设置 → 皮肤中心」，支持试穿 / 一键切换 / 互斥管理。
 
-> 说明：手工投放的皮肤因皮肤中心的溯源安全门不带 `hooks.mjs` 行为增强（占位文案、滚动优化）——壁纸、配色、徽标、玻璃样式等视觉完整；经 dsh-market 安装则功能全量。与插件安装方式二选一。
+> 说明：手工投放的皮肤因皮肤中心的溯源安全门不带 `hooks.mjs` 行为增强（占位文案、滚动优化）——壁纸、配色、玻璃样式等视觉完整；经 dsh-market 安装则功能全量。与插件安装方式二选一。
 
 ## 自定义
 
@@ -142,9 +142,9 @@ dsh web
 
 替换克隆目录中的 `assets/current.jpg`（保持文件名不变），浏览器强刷（Ctrl+F5）即可。
 
-### 换徽标
+### 换壁纸
 
-替换 `assets/logo/` 下的两个 SVG，强刷生效。
+替换 `assets/current.jpg` 后同样强刷生效（见上方「换壁纸」）。
 
 ### 调色
 
@@ -158,7 +158,7 @@ dsh web
 bundle/host.js       # 插件宿主半区（Node）：3 个资产路由 /kaze-tachinu/*（路径相对包内解析，装哪都能用）
 bundle/client.js     # 插件浏览器半区：token 覆盖 + 组件样式 + DOM 补丁
 cordis.patch.yml     # 插件行清单：dsh plugin add 挂载的入口
-assets/              # 壁纸与徽标（Logo 为自绘矢量）
+assets/              # 壁纸素材
 plugin/              # 会话内动态注入用的同源闭包源码（高级用法，一般无需关心）
 skin/kaze-tachinu/   # 皮肤中心（skin-center）皮肤包：skin.json v2 + skin.css + patches.css + hooks.mjs
 ```
@@ -175,7 +175,7 @@ A: 确认命令里带 `--profile web`（装进了正确的 profile）；浏览�
 </details>
 
 <details>
-<summary><strong>背景图 / 徽标 404？</strong></summary>
+<summary><strong>背景图 404？</strong></summary>
 
 A: 静态安装的资产路径相对包内解析，正常不会发生。多为 profile 的 node_modules 被手动清理或链接损坏所致：重新执行一次安装命令即可修复。
 
@@ -205,15 +205,15 @@ A: token 层是叠加式的，但视觉上会互相覆盖。建议同一时间�
 ## 已知限制
 
 - 主题的毛玻璃、滚动条与渐变蒙版按 Chromium 内核（Edge / Chrome）打磨，Firefox 下部分显示效果不兼容，推荐使用 Edge 或 Chrome。
-- 消息滚动重构、侧边栏徽标替换、输入卡高亮等处的选择器依赖 DSH 前端构建期哈希类名，DSH 大版本升级后可能需要跟随更新（见常见问题）。
+- 输入卡高亮等处的选择器依赖 DSH 前端构建期哈希类名，DSH 大版本升级后可能需要跟随更新（见常见问题）。
 - 主题强制深色玻璃视觉，亮色模式不做单独适配（见常见问题）。
-- 壁纸与徽标路由缓存 1 小时，替换素材后需强刷浏览器。
+- 壁纸路由缓存 1 小时，替换素材后需强刷浏览器。
 
 ## 许可证与素材版权
 
 代码以 [MIT](LICENSE) 授权。
 
-`assets/` 中的壁纸素材源自电影《起风了》（風立ちぬ, Kaze Tachinu, 2013）的宣传物料，版权归 Studio Ghibli、Nibariki、KDDI、Toho 等原权利方所有。`assets/logo/` 下的徽标为本仓库自绘原创矢量作品。本仓库仅作个人桌面美化之用，不主张任何素材版权，也不从中获利；如权利方提出异议，将立即移除相关素材。
+`assets/` 中的壁纸素材源自电影《起风了》（風立ちぬ, Kaze Tachinu, 2013）的宣传物料，版权归 Studio Ghibli、Nibariki、KDDI、Toho 等原权利方所有。本仓库仅作个人桌面美化之用，不主张任何素材版权，也不从中获利；如权利方提出异议，将立即移除相关素材。
 
 ## 参与贡献
 
