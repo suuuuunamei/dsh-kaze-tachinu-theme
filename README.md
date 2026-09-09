@@ -66,7 +66,7 @@ dsh-kaze-tachinu-theme 把 DSH Web GUI 变成宫崎骏《起风了》的模样�
 
 ### 输入卡与占位文案
 
-输入卡重绘为云海蓝玻璃胶囊，占位文案按界面语言自动替换。当前 DSH 为**单一输入框**，只显示「输入框」一列；仅当宿主版本另提供独立的“描述/新会话”输入框（占位以 `描述你想要构建的内容` / `Describe what you want to build` 开头）时，「新会话」列的文案才会出现。替换基于**前缀匹配**：即使宿主在默认提示后追加「… / 调用指令 @ 文件或对话」这类说明也能命中。
+输入卡重绘为云海蓝玻璃胶囊，占位文案按**界面语言**自动替换（含 CJK 检测：中文界面统一为「風立ちぬ——让想法随风飘去」）。当前 DSH 的输入框是基于 Lexical 的富文本编辑器：占位同时存在于 `data-placeholder` / `aria-label` 属性与**可见占位层**（绝对定位、类名以 `_placeholder` 结尾的节点）——引擎会同步这三处（旧版 `<textarea placeholder>` 同样支持），宿主重渲染后由 MutationObserver 自动补写。当前 DSH 为**单一输入框**，只显示「输入框」一列；仅当宿主版本另提供独立的“描述/新会话”输入框时，「新会话」列的文案才会出现。
 
 | 界面语言 | 输入框（统一入口） | 新会话描述（仅独立描述框的版本） |
 | --- | --- | --- |
@@ -186,7 +186,7 @@ dsh web   # 重启后页面完全还原
 
 ### 换占位文案
 
-文案映射集中在运行时引擎的占位规则表中（`bundle/client.js`、`plugin/client.js`、`skin/kaze-tachinu/hooks.mjs` 三处同源），按需修改后重启生效。
+占位文案由运行时引擎的 `themeCopyFor(text)` 按界面语言选择（三处同源：`bundle/client.js`、`plugin/client.js`、`skin/kaze-tachinu/hooks.mjs`）：中文统一为 `風立ちぬ——让想法随风飘去`，英文输入框为 `風立ちぬ。いざ生きめやも。`，独立的“描述/新会话”输入框为 `Kaze Tachinu — let your thoughts ride the wind`。修改后重启生效。
 
 ### 调色
 
@@ -226,7 +226,7 @@ A: 静态安装的资产路径相对包内解析，正常不会发生。多为 p
 <details>
 <summary><strong>占位文案没有变成主题台词？</strong></summary>
 
-A: 占位替换作用于宿主输入组件的 placeholder 属性（前缀匹配可命中带后缀的默认文案）。个别桌面发行版若以自绘视觉层渲染占位文本而非真实 placeholder 属性，则该替换不适用；标准 DSH Web 客户端下生效。
+A: 引擎会同步 Lexical 编辑器的 `data-placeholder` / `aria-label` 与其可见占位层（以及旧版 textarea 的 placeholder），文案按界面语言（CJK 检测）选择。仍不生效时请确认：装的是含客户端引擎的插件版，或经 dsh-market 安装的皮肤——手工投放的皮肤不带 hooks；个别桌面发行版只加载宿主半区时此类 DOM 级效果不生效，标准 DSH Web 客户端可完整生效。
 
 </details>
 

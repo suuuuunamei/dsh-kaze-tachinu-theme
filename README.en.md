@@ -57,7 +57,7 @@ A ~60-entry design-token overlay via the official `theme.overrideTokens` API: tr
 
 ### Composer and placeholder copy
 
-The composer is re-skinned as a navy glass capsule; placeholder copy is swapped per UI language using **prefix matching** (it still matches when the host appends suffixes like "… / call a command @ file or conversation"). Current DSH has a **single composer box**, so only the "Composer" column is visible; the "New-session" copy only appears on host builds that still provide a separate describe/new-session input (placeholder starting with "Describe what you want to build").
+The composer is re-skinned as a navy glass capsule; placeholder copy is swapped by **UI language** (CJK detection: the Chinese UI always reads `風立ちぬ——让想法随风飘去`). Current DSH's composer is a Lexical rich-text editor: the placeholder lives both in its `data-placeholder` / `aria-label` attributes and in a dedicated visible placeholder layer (absolutely positioned, class token ending `_placeholder`) — the engine syncs all three (legacy `<textarea placeholder>` included), and a MutationObserver re-applies it after host re-renders. Current DSH has a **single composer box**, so only the "Composer" column is visible; the "New-session" copy only appears on host builds that still provide a separate describe/new-session input.
 
 | UI language | Composer (unified box) | New-session (only on builds with a separate box) |
 | --- | --- | --- |
@@ -155,7 +155,7 @@ Clone and install with `link:` (see local dev above).
 
 - Wallpaper: replace `assets/current.jpg` (keep the filename), hard-refresh.
 - Logos: replace the two SVGs in `assets/logo/`, hard-refresh.
-- Placeholder copy: edit the rule table in the runtime engine (`bundle/client.js`, `plugin/client.js`, `skin/.../hooks.mjs` — same source), restart.
+- Placeholder copy: chosen by `themeCopyFor(text)` in the runtime engine by UI language (three in-sync copies: `bundle/client.js`, `plugin/client.js`, `skin/.../hooks.mjs`). Chinese is unified to `風立ちぬ——让想法随风飘去`; the English composer reads `風立ちぬ。いざ生きめやも。`, and a separate describe/new-session box would read `Kaze Tachinu — let your thoughts ride the wind`. Restart to apply.
 - Colors: token overlays in `bundle/client.js` / `skin/kaze-tachinu/skin.css` plus decorative styles; restart and hard-refresh. See [docs/theme-tokens.md](docs/theme-tokens.md).
 
 ## Architecture
@@ -192,7 +192,7 @@ Re-run the install command — usually a pruned or broken profile `node_modules`
 <details>
 <summary><strong>Placeholder copy not themed?</strong></summary>
 
-The swap reads the real placeholder attribute. Some desktop distributions draw placeholders in their own visual layer; standard DSH Web clients are supported.
+The engine syncs the Lexical composer's `data-placeholder` / `aria-label` and its visible placeholder layer (plus legacy `<textarea placeholder>`), picking the copy by UI language (CJK detection). If it still does not change, make sure you installed the plugin (with its client engine) or a dsh-market skin — manually dropped skins have no hooks — and that your build runs the plugin's browser half; standard DSH Web clients get everything.
 
 </details>
 
