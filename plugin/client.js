@@ -137,12 +137,12 @@ return {
     document.addEventListener('wheel', composerWheel, { capture: true, passive: false });
     ctx.effect(() => () => document.removeEventListener('wheel', composerWheel, { capture: true }));
     // ── 消息滚动重构配套（样式表内有完整注释）──────────────────────
-    // 1) 给纯消息滚动容器 .Md3f7G_scroll 补 data-conversation-scroll 标记：
+    // 1) 给纯消息滚动容器 ._7mWUNa_scroll 补 data-conversation-scroll 标记：
     //    组件 scrollerOf() 用 closest 查找该属性，从消息侧会先命中自身，
     //    自动跟随 / 滚动位置恢复 / 回到底部 / 加载更早消息全部锚定内层
     //    滚动器。React 重建节点时由 MutationObserver 补打标记。
     const markChatScrollers = () => {
-      document.querySelectorAll('.Md3f7G_scroll:not([data-conversation-scroll])').forEach((el) => {
+      document.querySelectorAll('._7mWUNa_scroll:not([data-conversation-scroll])').forEach((el) => {
         el.setAttribute('data-conversation-scroll', '');
       });
     };
@@ -151,7 +151,7 @@ return {
     chatScrollerObserver.observe(document.body, { subtree: true, childList: true });
     ctx.effect(() => () => {
       chatScrollerObserver.disconnect();
-      document.querySelectorAll('.Md3f7G_scroll[data-conversation-scroll]').forEach((el) => {
+      document.querySelectorAll('._7mWUNa_scroll[data-conversation-scroll]').forEach((el) => {
         el.removeAttribute('data-conversation-scroll');
       });
     });
@@ -184,7 +184,7 @@ return {
         node = node.parentElement;
       }
       const root = card.closest('.wSkVaW_root');
-      const real = root === null ? null : root.querySelector('.Md3f7G_scroll');
+      const real = root === null ? null : root.querySelector('._7mWUNa_scroll');
       if (!(real instanceof HTMLElement)) return;
       event.preventDefault();
       event.stopImmediatePropagation();
@@ -195,13 +195,13 @@ return {
     // 3) 滚动事件接力：组件把 scroll 监听器锚定在挂载时解析到的容器上；
     //    若会话先于插件激活挂载，监听器留在已退化为布局的外层 scrollBody，
     //    内层滚动事件到不了它 → atBottom 恒真 → 「回到底部」按钮永不出现。
-    //    接力：捕获内层 .Md3f7G_scroll 的 scroll，在外层派发合成 scroll；
+    //    接力：捕获内层 ._7mWUNa_scroll 的 scroll，在外层派发合成 scroll；
     //    组件处理器运行时经 scrollerOf() 重新解析到内层，状态计算恢复正确。
     //    （若监听器本就锚定内层，转发无人接收，无副作用、不成环。）
     const relayChatScroll = (event) => {
       const inner = event.target;
       if (!(inner instanceof Element)) return;
-      if (!inner.classList.contains('Md3f7G_scroll')) return;
+      if (!inner.classList.contains('_7mWUNa_scroll')) return;
       const outer = inner.closest('.wSkVaW_scrollBody');
       if (outer instanceof HTMLElement) outer.dispatchEvent(new Event('scroll'));
     };
@@ -253,15 +253,15 @@ body[data-ds-dark-theme] [data-chat-flow] {
 /* ── 消息滚动重构 + 底部渐变蒙版（active 会话）────────────────────
  * 结构事实：DSH 的滚动容器 [data-conversation-scroll]（scrollBody）同时包含
  * 消息区与 composerSeat（sticky 吸底），加在它或其祖先上的 mask 必然裁到
- * 输入框。因此把滚动视口【下沉】到纯消息容器 .Md3f7G_scroll：
- *   · composerSeat 是 .Md3f7G_scroll 的兄弟节点——结构上绝对隔离，
+ * 输入框。因此把滚动视口【下沉】到纯消息容器 ._7mWUNa_scroll：
+ *   · composerSeat 是 ._7mWUNa_scroll 的兄弟节点——结构上绝对隔离，
  *     mask 只作用于消息列与回到底部按钮，输入框零裁切；
  *   · 外层 scrollBody 退化为纯布局（overflow:hidden，flex 链撑满）；
  *   · slot → viewArea → root → scroll 逐层 flex:1 + min-height:0，
- *     使 .Md3f7G_scroll 成为有界滚动视口，mask 百分比基准 = 可视高度；
+ *     使 ._7mWUNa_scroll 成为有界滚动视口，mask 百分比基准 = 可视高度；
  *   · 渐变：最后 40px 平滑淡出至全透明；padding-bottom 24px 保证滚到底时
  *     消息文本全部停在渐变区上方完整显示（卡片自身底部内边距柔和溶解）。
- * JS 配套（apply 内 markChatScrollers）：给 .Md3f7G_scroll 补
+ * JS 配套（apply 内 markChatScrollers）：给 ._7mWUNa_scroll 补
  * data-conversation-scroll 属性，组件 scrollerOf() 的 closest 会先命中自身，
  * 自动跟随/位置恢复/回到底部/加载更早消息全部锚定内层滚动器。
  * hero / settling 阶段不生效，保持组件原生布局。 */
@@ -279,12 +279,12 @@ body[data-ds-dark-theme] [data-chat-flow] {
   flex: 1 1 0 !important;
   min-height: 0 !important;
 }
-.wSkVaW_root[data-phase="active"] .Md3f7G_root {
+.wSkVaW_root[data-phase="active"] ._7mWUNa_root {
   flex: 1 1 0 !important;
   min-height: 0 !important;
   height: auto !important;
 }
-.wSkVaW_root[data-phase="active"] .Md3f7G_scroll {
+.wSkVaW_root[data-phase="active"] ._7mWUNa_scroll {
   flex: 1 1 0 !important;
   min-height: 0 !important;
   overflow-y: auto !important;
@@ -298,8 +298,8 @@ body[data-ds-dark-theme] [data-chat-flow] {
 /* 会话统计栏：居中胶囊式轻毛玻璃。文字蓝紫，fit-content 胶囊宽度由内容
  * 决定（完整显示），暗色半透明底 + blur 把文字从壁纸中托出（解决“糊着”）；
  * 视觉克制：无阴影、细边框、小内边距。
- * 注意：.FJxK0a_ 为构建哈希前缀，升级 dsh-client-ui-conversation 后需同步。 */
-[data-composer-seat] .FJxK0a_root {
+ * 注意：.uCgNAq_ 为当前构建哈希前缀（旧 .FJxK0a_ 已废弃）。 */
+[data-composer-seat] .uCgNAq_root {
   width: fit-content !important;
   max-width: 100% !important;
   margin: 4px auto 0 !important;
@@ -313,7 +313,7 @@ body[data-ds-dark-theme] [data-chat-flow] {
   backdrop-filter: blur(10px) saturate(130%) !important;
   -webkit-backdrop-filter: blur(10px) saturate(130%) !important;
 }
-[data-composer-seat] .FJxK0a_sep {
+[data-composer-seat] .uCgNAq_sep {
   color: rgba(28, 150, 181, 0.42) !important;
   margin: 0 6px !important;
 }

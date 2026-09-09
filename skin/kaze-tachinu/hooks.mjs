@@ -45,7 +45,7 @@ export default function defineSkinHooks() {
       // 2) Chat scroll companions for the L3 viewport rework: mark the pure
       //    message scroller so the component's scrollerOf() resolves inward.
       const markChatScrollers = () => {
-        document.querySelectorAll('.Md3f7G_scroll:not([data-conversation-scroll])').forEach((el) => {
+        document.querySelectorAll('._7mWUNa_scroll:not([data-conversation-scroll])').forEach((el) => {
           el.setAttribute('data-conversation-scroll', '');
         });
       };
@@ -54,7 +54,7 @@ export default function defineSkinHooks() {
       chatScrollerObserver.observe(document.body, { subtree: true, childList: true });
       onCleanup(() => {
         chatScrollerObserver.disconnect();
-        document.querySelectorAll('.Md3f7G_scroll[data-conversation-scroll]').forEach((el) => {
+        document.querySelectorAll('._7mWUNa_scroll[data-conversation-scroll]').forEach((el) => {
           el.removeAttribute('data-conversation-scroll');
         });
       });
@@ -65,7 +65,7 @@ export default function defineSkinHooks() {
       const relayChatScroll = (event) => {
         const inner = event.target;
         if (!(inner instanceof Element)) return;
-        if (!inner.classList.contains('Md3f7G_scroll')) return;
+        if (!inner.classList.contains('_7mWUNa_scroll')) return;
         const outer = inner.closest('.wSkVaW_scrollBody');
         if (outer instanceof HTMLElement) outer.dispatchEvent(new Event('scroll'));
       };
@@ -108,7 +108,7 @@ export default function defineSkinHooks() {
           node = node.parentElement;
         }
         const root = card.closest('.wSkVaW_root');
-        const real = root === null ? null : root.querySelector('.Md3f7G_scroll');
+        const real = root === null ? null : root.querySelector('._7mWUNa_scroll');
         if (!(real instanceof HTMLElement)) return;
         event.preventDefault();
         event.stopImmediatePropagation();
