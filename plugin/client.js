@@ -175,6 +175,54 @@ return {
       clearTimeout(dynamicTimer);
       if (dynamicStyle) dynamicStyle.remove();
     });
+    // ── [DEBUG] DOM probe overlay（临时排查：品牌徽标 / 占位文案）──
+    const probe = () => {
+      const cls = (el) => (typeof el.className === 'string' ? el.className.trim().slice(0, 140) : '');
+      const out = {};
+      out.textareas = [...document.querySelectorAll('textarea')].map((t) => ({ ph: (t.getAttribute('placeholder') || '').slice(0, 90), cls: cls(t).slice(0, 80) })).slice(0, 6);
+      out.inputs = [...document.querySelectorAll('input')].map((t) => ({ ph: (t.getAttribute('placeholder') || '').slice(0, 90), cls: cls(t).slice(0, 80) })).slice(0, 6);
+      out.composerCard = !!document.querySelector('[data-composer-card]');
+      const bases = ['描述你想要构建的内容', '给智能体发消息', 'Describe what you want to build', 'Message the agent'];
+      out.hints = [];
+      const card = document.querySelector('[data-composer-card]');
+      if (card) {
+        card.querySelectorAll('*').forEach((el) => {
+          if (el.children.length) return;
+          const tx = (el.textContent || '').trim();
+          if (tx && bases.some((b) => tx.startsWith(b))) {
+            out.hints.push({ tag: el.tagName, cls: cls(el).slice(0, 90), tx: tx.slice(0, 70), ph: (el.getAttribute('placeholder')) || '' });
+          }
+        });
+        out.hints = out.hints.slice(0, 6);
+      }
+      out.brand = [];
+      out.logo = [];
+      document.querySelectorAll('[class]').forEach((el) => {
+        const toks = cls(el).split(/\s+/).filter(Boolean);
+        const hit = (k) => toks.some((t) => t.toLowerCase().includes(k));
+        if (hit('brand') && out.brand.length < 14) out.brand.push({ tag: el.tagName, c: cls(el).slice(0, 100), svg: !!el.querySelector('svg'), tx: (el.textContent || '').trim().slice(0, 20) });
+        if (hit('logo') && out.logo.length < 8) out.logo.push({ tag: el.tagName, c: cls(el).slice(0, 100), svg: !!el.querySelector('svg') });
+      });
+      out.hero = [];
+      document.querySelectorAll('[class]').forEach((el) => {
+        if (out.hero.length >= 16) return;
+        const c = cls(el);
+        if (/headline|_fish|_fishHitbox|hero|_phase/i.test(c)) out.hero.push({ tag: el.tagName, c: c.slice(0, 110), tx: (el.textContent || '').trim().slice(0, 18) });
+      });
+      out.composerTree = [];
+      if (card) {
+        let i = 0;
+        card.querySelectorAll('*').forEach((el) => { if (i++ >= 40) return; out.composerTree.push({ tag: el.tagName, c: cls(el).slice(0, 90) }); });
+      }
+      return JSON.stringify(out);
+    };
+    let probeEl = document.createElement('pre');
+    probeEl.style.cssText = 'position:fixed;right:8px;bottom:8px;z-index:2147483000;max-width:620px;max-height:430px;overflow:auto;background:rgba(0,0,0,.93);color:#7CFC8C;font:11px/1.4 Consolas,Menlo,monospace;padding:8px;border:1px solid #0f0;border-radius:6px;pointer-events:none;white-space:pre-wrap;word-break:break-all;';
+    const renderProbe = () => { probeEl.textContent = probe(); };
+    renderProbe();
+    document.head.append(probeEl);
+    [1800, 4000, 8000].forEach((ms) => setTimeout(renderProbe, ms));
+    ctx.effect(() => { probeEl.remove(); });
     // Wheel isolation: while the composer textarea has focus, only the input
     // card's own scroll container may consume the wheel. Defaults (InputBar
     // onWheel) forward the delta to the conversation scrollport when the
