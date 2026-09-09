@@ -38,6 +38,14 @@ return {
           if (el.getAttribute(attr) !== copy) el.setAttribute(attr, copy);
           if (el.hasAttribute('aria-label') && el.getAttribute('aria-label') !== copy) el.setAttribute('aria-label', copy);
         });
+        // The visible grey text is a dedicated absolute placeholder layer
+        // (class token ending "_placeholder") whose textContent the host owns.
+        document.querySelectorAll('[data-composer-card] [class*="_placeholder"]').forEach((ph) => {
+          const ownsToken = [...(typeof ph.className === 'string' ? ph.className.split(/\s+/) : [])].some((c) => c.endsWith('_placeholder'));
+          if (!ownsToken) return;
+          const copy = themeCopyFor(ph.textContent || '');
+          if (copy && ph.textContent.trim() !== copy) ph.textContent = copy;
+        });
       };
       walk();
       const observer = new MutationObserver(walk);
