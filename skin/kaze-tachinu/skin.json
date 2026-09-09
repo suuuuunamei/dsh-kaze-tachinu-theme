@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schemas.linxin666.org/dsh-skin/v2.json",
+  "skinManifestVersion": 2,
+  "id": "kaze-tachinu",
+  "name": "風立ちぬ",
+  "nameEn": "The Wind Rises",
+  "version": "1.0.0",
+  "author": "dsh-kaze-tachinu-theme contributors",
+  "tagline": "天蓝玻璃拟态 · 晴空电影壁纸 · いざ生きめやも",
+  "description": "《起风了》（風立ちぬ / The Wind Rises）主题皮肤：青空白云电影壁纸垫底，全局天蓝（#7FB5E3）毛玻璃拟态，深空半透明表面与低饱和天蓝描边贯穿亮暗两态；侧边栏与首页替换为自绘矢量徽标（展开 + 折叠两版），输入卡为云海蓝玻璃胶囊，占位文案换成「风起了，要努力活下去。」（台词映射见 hooks 说明）。视觉完整，行为增强（占位文案与滚动优化）需经市场安装启用。",
+  "tags": [
+    "kaze-tachinu",
+    "the-wind-rises",
+    "ghibli",
+    "miyazaki",
+    "sky-blue",
+    "glassmorphism",
+    "anime",
+    "cinematic"
+  ],
+  "accent": "#7FB5E3",
+  "order": 60,
+  "license": "MIT (code) — artwork © Studio Ghibli / Toho (Kaze Tachinu, 2013), personal desktop use only",
+  "sourceUrl": "https://github.com/Snamei/dsh-kaze-tachinu-theme",
+  "attribution": "Wallpaper derives from promotional material / key art of the film Kaze Tachinu (The Wind Rises, 2013); copyright belongs to Studio Ghibli, Toho and other rights holders. Logos are original vector artwork drawn for this skin. Assets are distributed solely for personal desktop customization, with no ownership claimed and no revenue derived; they will be removed upon a rights holder's request.",
+  "preview": {
+    "light": "preview/light.png",
+    "dark": "preview/dark.png"
+  },
+  "requires": {
+    "contracts": [
+      {
+        "apiVersion": "x-org.linxin666.skin-center/v1alpha1",
+        "kind": "SkinHooks",
+        "optional": true
+      }
+    ]
+  },
+  "contributes": {
+    "stylesheet": "skin.css",
+    "patches": "patches.css",
+    "backgroundMedia": {
+      "light": {
+        "type": "image",
+        "src": "assets/wallpaper.jpg",
+        "scrim": "linear-gradient(180deg, rgba(4,7,18,0.12) 0%, rgba(8,11,28,0.06) 45%, rgba(14,8,26,0.10) 100%)"
+      },
+      "dark": {
+        "type": "image",
+        "src": "assets/wallpaper.jpg",
+        "scrim": "linear-gradient(180deg, rgba(4,7,18,0.12) 0%, rgba(8,11,28,0.06) 45%, rgba(14,8,26,0.10) 100%)"
+      }
+    }
+  },
+  "facets": {
+    "client": {
+      "entry": "hooks.mjs",
+      "apiVersion": "x-org.linxin666.skin-center/v1alpha1"
+    }
+  }
+}
