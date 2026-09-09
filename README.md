@@ -43,6 +43,10 @@ dsh-kaze-tachinu-theme 把 DSH Web GUI 变成宫崎骏《起风了》的模样�
 | 安装 | — | `dsh plugin --profile web add ...` 一条命令 |
 | 还原 | — | 卸载即完全还原 |
 
+<p align="center">
+  <img src="docs/screenshots/home-hero.png" alt="主页：居中大尺寸徽标" width="760">
+</p>
+
 ## 主题细节
 
 ### 天蓝玻璃拟态
@@ -54,6 +58,10 @@ dsh-kaze-tachinu-theme 把 DSH Web GUI 变成宫崎骏《起风了》的模样�
 - 壁纸由插件宿主半区以 `/kaze-tachinu/current.jpg` 路由提供（包内 `assets/current.jpg`），叠加一层轻微的深色渐变保证文字可读性；
 - 侧边栏展开态显示横向徽标（红翼飞机 + The Wind Rises 字标），折叠态显示纸飞机字母标记（两个 SVG 均为本仓库自绘原创矢量，由插件路由提供）；
 - 首页（hero）标题替换为居中大尺寸徽标。
+
+<p align="center">
+  <img src="docs/screenshots/chat-main.png" alt="会话视图：壁纸上的玻璃拟态界面" width="676">
+</p>
 
 ### 输入卡与占位文案
 
