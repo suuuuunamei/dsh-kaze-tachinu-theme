@@ -217,11 +217,11 @@ return {
       return JSON.stringify(out);
     };
     let probeEl = document.createElement('pre');
-    probeEl.style.cssText = 'position:fixed;right:8px;bottom:8px;z-index:2147483000;max-width:620px;max-height:430px;overflow:auto;background:rgba(0,0,0,.93);color:#7CFC8C;font:11px/1.4 Consolas,Menlo,monospace;padding:8px;border:1px solid #0f0;border-radius:6px;pointer-events:none;white-space:pre-wrap;word-break:break-all;';
-    const renderProbe = () => { probeEl.textContent = probe(); };
+    probeEl.style.cssText = 'position:fixed;left:0;top:0;z-index:2147483000;width:98vw;max-height:62vh;overflow:auto;background:rgba(0,0,0,.96);color:#7CFF8C;font:15px/1.5 Consolas,Menlo,monospace;padding:10px 14px;border-bottom:3px solid #7CFF8C;pointer-events:none;white-space:pre-wrap;word-break:break-all;';
+    const renderProbe = () => { probeEl.textContent = '[KT-PROBE OK] ' + probe(); };
     renderProbe();
     document.head.append(probeEl);
-    [1800, 4000, 8000].forEach((ms) => setTimeout(renderProbe, ms));
+    [1200, 2500, 5000, 9000, 15000].forEach((ms) => setTimeout(renderProbe, ms));
     ctx.effect(() => { probeEl.remove(); });
     // Wheel isolation: while the composer textarea has focus, only the input
     // card's own scroll container may consume the wheel. Defaults (InputBar
