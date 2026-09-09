@@ -23,7 +23,7 @@ return {
         '给智能体发消息': '风起了，要努力活下去。',
         'Message the agent': '風立ちぬ。いざ生きめやも。',
         '描述你想要构建的内容': '風立ちぬ——让想法随风飘去',
-        'Describe what you want to build': 'Kaze Tachinu — let your ideas drift with the wind',
+        'Describe what you want to build': 'Kaze Tachinu — let your thoughts ride the wind',
       };
       const walk = () => {
         document.querySelectorAll('textarea').forEach((ta) => {
