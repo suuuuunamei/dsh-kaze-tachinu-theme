@@ -24,11 +24,11 @@ C:\Users\24979\AppData\Roaming\dsh-desktop\harness\profiles\web
 
 ## 发布到 GitHub
 
-1. 在 GitHub 创建空仓库 `Snamei/dsh-kaze-tachinu-theme`（默认分支 main）；
+1. 在 GitHub 创建空仓库 `suuuuunamei/dsh-kaze-tachinu-theme`（默认分支 main）；
 2. 关联并推送：
 
 ```sh
-git remote add origin https://github.com/Snamei/dsh-kaze-tachinu-theme.git
+git remote add origin https://github.com/suuuuunamei/dsh-kaze-tachinu-theme.git
 git push -u origin main
 ```
 
@@ -58,7 +58,7 @@ npm publish
 dsh plugin --profile web add dsh-kaze-tachinu-theme
 
 # 或直接从 GitHub 安装
-dsh plugin --profile web add github:Snamei/dsh-kaze-tachinu-theme
+dsh plugin --profile web add github:suuuuunamei/dsh-kaze-tachinu-theme
 
 # 卸载
 dsh plugin --profile web remove dsh-kaze-tachinu-theme

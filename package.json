@@ -29,13 +29,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Snamei/dsh-kaze-tachinu-theme.git",
+    "url": "git+https://github.com/suuuuunamei/dsh-kaze-tachinu-theme.git",
     "directory": "."
   },
   "author": "dsh-kaze-tachinu-theme contributors",
-  "homepage": "https://github.com/Snamei/dsh-kaze-tachinu-theme#readme",
+  "homepage": "https://github.com/suuuuunamei/dsh-kaze-tachinu-theme#readme",
   "bugs": {
-    "url": "https://github.com/Snamei/dsh-kaze-tachinu-theme/issues"
+    "url": "https://github.com/suuuuunamei/dsh-kaze-tachinu-theme/issues"
   },
   "keywords": [
     "dsh",

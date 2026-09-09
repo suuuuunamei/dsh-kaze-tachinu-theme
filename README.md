@@ -7,11 +7,11 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/Snamei/dsh-kaze-tachinu-theme?style=flat-square" alt="License">
+  <img src="https://img.shields.io/github/license/suuuuunamei/dsh-kaze-tachinu-theme?style=flat-square" alt="License">
   &nbsp;
-  <img src="https://img.shields.io/github/v/tag/Snamei/dsh-kaze-tachinu-theme?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/github/v/tag/suuuuunamei/dsh-kaze-tachinu-theme?style=flat-square" alt="Version">
   &nbsp;
-  <img src="https://img.shields.io/github/stars/Snamei/dsh-kaze-tachinu-theme?style=flat-square" alt="Stars">
+  <img src="https://img.shields.io/github/stars/suuuuunamei/dsh-kaze-tachinu-theme?style=flat-square" alt="Stars">
 </p>
 
 <p align="center">
@@ -127,7 +127,7 @@ dsh web   # 重启 DSH 生效
 也可以直接从 GitHub 安装：
 
 ```sh
-dsh plugin --profile web add github:Snamei/dsh-kaze-tachinu-theme
+dsh plugin --profile web add github:suuuuunamei/dsh-kaze-tachinu-theme
 ```
 
 壁纸出现、侧边栏徽标替换生效，即安装成功。安装后随 DSH 启动常驻，无需每次重装。
@@ -275,6 +275,6 @@ A: token 层是叠加式的，但视觉上会互相覆盖。建议同一时间�
 
 **喜欢这个主题？点个 Star。**
 
-[报告问题](https://github.com/Snamei/dsh-kaze-tachinu-theme/issues) · [功能建议](https://github.com/Snamei/dsh-kaze-tachinu-theme/issues)
+[报告问题](https://github.com/suuuuunamei/dsh-kaze-tachinu-theme/issues) · [功能建议](https://github.com/suuuuunamei/dsh-kaze-tachinu-theme/issues)
 
 </div>

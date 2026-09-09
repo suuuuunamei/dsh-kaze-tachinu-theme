@@ -7,11 +7,11 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/Snamei/dsh-kaze-tachinu-theme?style=flat-square" alt="License">
+  <img src="https://img.shields.io/github/license/suuuuunamei/dsh-kaze-tachinu-theme?style=flat-square" alt="License">
   &nbsp;
-  <img src="https://img.shields.io/github/v/tag/Snamei/dsh-kaze-tachinu-theme?style=flat-square" alt="Version">
+  <img src="https://img.shields.io/github/v/tag/suuuuunamei/dsh-kaze-tachinu-theme?style=flat-square" alt="Version">
   &nbsp;
-  <img src="https://img.shields.io/github/stars/Snamei/dsh-kaze-tachinu-theme?style=flat-square" alt="Stars">
+  <img src="https://img.shields.io/github/stars/suuuuunamei/dsh-kaze-tachinu-theme?style=flat-square" alt="Stars">
 </p>
 
 <p align="center">
@@ -119,7 +119,7 @@ dsh web   # restart DSH
 or straight from GitHub:
 
 ```sh
-dsh plugin --profile web add github:Snamei/dsh-kaze-tachinu-theme
+dsh plugin --profile web add github:suuuuunamei/dsh-kaze-tachinu-theme
 ```
 
 Wallpaper and the sidebar logo appearing means success. It stays resident; no per-session installs.
@@ -241,6 +241,6 @@ Wallpaper artwork in `assets/` derives from promotional material of *The Wind Ri
 
 **Enjoying the theme? Star it.**
 
-[Report an issue](https://github.com/Snamei/dsh-kaze-tachinu-theme/issues) · [Feature request](https://github.com/Snamei/dsh-kaze-tachinu-theme/issues)
+[Report an issue](https://github.com/suuuuunamei/dsh-kaze-tachinu-theme/issues) · [Feature request](https://github.com/suuuuunamei/dsh-kaze-tachinu-theme/issues)
 
 </div>
