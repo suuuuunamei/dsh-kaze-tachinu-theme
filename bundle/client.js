@@ -20,7 +20,7 @@ window.__ModuleLoader__.load({
           '给智能体发消息': '风起了，要努力活下去。',
           'Message the agent': '风起了，要努力活下去。',
           '描述你想要构建的内容': '風立ちぬ——让想法随风飘去',
-          'Describe what you want to build': '風立ちぬ——让想法随风飘去',
+          'Describe what you want to build': 'Kaze Tachinu — let your ideas drift with the wind',
         };
         const walk = () => {
           document.querySelectorAll('textarea').forEach((ta) => {

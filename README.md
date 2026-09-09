@@ -70,7 +70,7 @@ dsh-kaze-tachinu-theme 把 DSH Web GUI 变成宫崎骏《起风了》的模样�
 | 界面语言 | 输入框 | 新会话描述 |
 | --- | --- | --- |
 | 中文 | `风起了，要努力活下去。` | `風立ちぬ——让想法随风飘去` |
-| 英文 | `風立ちぬ。いざ生きめやも。` | `The wind is rising — what shall we build?` |
+| 英文 | `風立ちぬ。いざ生きめやも。` | `Kaze Tachinu — let your ideas drift with the wind` |
 
 ### 消息滚动与渐变蒙版
 
