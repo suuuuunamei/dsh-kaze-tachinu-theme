@@ -69,7 +69,7 @@ The composer is redrawn as a sky-navy glass capsule; placeholder copy swaps auto
 
 | UI language | Input box | New-session description |
 | --- | --- | --- |
-| Chinese | `风起了，要努力活下去。` | `風立ちぬ——今天想构建怎样的世界？` |
+| Chinese | `风起了，要努力活下去。` | `風立ちぬ——让想法随风飘去` |
 | English | `風立ちぬ。いざ生きめやも。` | `The wind is rising — what shall we build?` |
 
 ### Message scrolling & fade mask

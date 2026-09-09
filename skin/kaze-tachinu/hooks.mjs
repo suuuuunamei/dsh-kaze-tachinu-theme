@@ -22,7 +22,7 @@ export default function defineSkinHooks() {
       const replacements = {
         '给智能体发消息': '风起了，要努力活下去。',
         'Message the agent': '風立ちぬ。いざ生きめやも。',
-        '描述你想要构建的内容': '風立ちぬ——今天想构建怎样的世界？',
+        '描述你想要构建的内容': '風立ちぬ——让想法随风飘去',
         'Describe what you want to build': 'The wind is rising — what shall we build?',
       };
       const walk = () => {
