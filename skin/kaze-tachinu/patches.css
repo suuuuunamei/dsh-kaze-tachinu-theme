@@ -1,9 +1,16 @@
 /* kaze-tachinu skin — L3 free-selector patches.
- * Glass surfaces on hash-classed components, logo swap, scrollbars, and the
- * message-list bottom fade. Fragility is the skin author's own (per contract):
- * the ._7mWUNa_/.wSkVaW_/.hHd-Xa_ prefixes are build-time hashes and
- * may shift on DSH frontend upgrades (retargeted to the 0.7.2 bundle:
- * old .Md3f7G_ chat-list prefix is now ._7mWUNa_; stats bar .FJxK0a_ is now .uCgNAq_).
+ * Glass surfaces on data-contract hooks, logo swap, scrollbars, the
+ * message-list bottom fade and the stats pill.
+ *
+ * Drift-resilience contract (v2): NOTHING in this file targets DSH
+ * build-time hash classes (._7mWUNa_, .wSkVaW_, .Md3f7G_, .uCgNAq_ …).
+ * The chat-scroll rework is executed by hooks.mjs (inline styles +
+ * kaze-injected attributes); CSS below is decoration keyed only to those
+ * attributes ([data-kaze-stats], [data-kaze-stats-sep]) or to stable
+ * data-* / role hooks. If a future DSH bundle stops matching, the hooks
+ * bail out and native scrolling stays intact — cosmetic degrade, never a
+ * broken chat. Residual hash selectors elsewhere (hero logo, sidebar
+ * brand) are cosmetic only.
  * All selectors get scoped under
  * html[data-dsh-skin="kaze-tachinu"] by the loader's safety pipeline. */
 
@@ -18,40 +25,10 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* ── Message scroll rework + bottom gradient fade (active sessions) ──
- * Sinks the scroll viewport into the pure message container so the mask
- * never clips the composer. See hooks.mjs for the JS companions. */
-.wSkVaW_root[data-phase="active"] .wSkVaW_scrollBody {
-  overflow: hidden !important;
-}
-.wSkVaW_root[data-phase="active"] .wSkVaW_scrollBody > [data-slot="conversation.session"] {
-  flex: 1 1 0 !important;
-  min-height: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  overflow: hidden !important;
-}
-.wSkVaW_root[data-phase="active"] .wSkVaW_viewArea {
-  flex: 1 1 0 !important;
-  min-height: 0 !important;
-}
-.wSkVaW_root[data-phase="active"] ._7mWUNa_root {
-  flex: 1 1 0 !important;
-  min-height: 0 !important;
-  height: auto !important;
-}
-.wSkVaW_root[data-phase="active"] ._7mWUNa_scroll {
-  flex: 1 1 0 !important;
-  min-height: 0 !important;
-  overflow-y: auto !important;
-  padding-bottom: 24px !important;
-  --dsh-composer-height: 28px !important;
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 40px), transparent 100%) !important;
-  mask-image: linear-gradient(to bottom, black 0%, black calc(100% - 40px), transparent 100%) !important;
-}
-
-/* ── Session stats bar: centered slim glass pill ───────────────────── */
-[data-composer-seat] .uCgNAq_root {
+/* ── Session stats bar: centered slim glass pill ─────────────────────
+ * The pill and its separators are tagged at runtime by hooks.mjs with
+ * [data-kaze-stats] / [data-kaze-stats-sep] — no hash classes. */
+[data-kaze-stats] {
   width: fit-content !important;
   max-width: 100% !important;
   margin: 4px auto 0 !important;
@@ -65,9 +42,16 @@
   backdrop-filter: blur(10px) saturate(130%) !important;
   -webkit-backdrop-filter: blur(10px) saturate(130%) !important;
 }
-[data-composer-seat] .uCgNAq_sep {
+[data-kaze-stats-sep] {
   color: rgba(28, 150, 181, 0.42) !important;
   margin: 0 6px !important;
+}
+
+/* The scroll rework itself lives in hooks.mjs — nothing here may set
+ * overflow/height on the message scroller, so a failed detection can
+ * never freeze the chat. */
+[data-kaze-scroll] {
+  /* reserved: identity hook for hooks.mjs wheel forwarding */
 }
 
 /* ── Composer card: navy glass capsule ────────────────────────────── */
