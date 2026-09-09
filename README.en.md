@@ -3,7 +3,6 @@
 [中文](README.md) | English
 
 <p align="center">
-  <img src="assets/logo/logo.svg" alt="Kaze Tachinu (The Wind Rises)" width="460">
 </p>
 
 <p align="center">
@@ -43,7 +42,6 @@ It is a standard dsh plugin package: one `dsh plugin` command installs it into t
 | Revert | — | Full revert on uninstall |
 
 <p align="center">
-  <img src="docs/screenshots/home-hero.png" alt="Home: large centered logo" width="760">
 </p>
 
 ## Theme details
@@ -59,7 +57,6 @@ The theme layers ~60 design-token overrides on top of the official `theme.overri
 
 
 <p align="center">
-  <img src="docs/screenshots/sidebar.png" alt="Sidebar: expanded brand" width="123">
   <img src="docs/screenshots/chat-main.png" alt="Main: glass session view over the wallpaper" width="676">
 </p>
 
