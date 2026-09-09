@@ -27,7 +27,7 @@
 
 ## 是什么
 
-dsh-kaze-tachinu-theme 把 DSH Web GUI 变成宫崎骏《起风了》的模样：一张飞机飞越云海的晴空电影壁纸垫底，全部界面表面换成半透明毛玻璃，交互色统一为天蓝（`#1C96B5`），侧边栏品牌与首页 hero 标题替换为自绘矢量徽标（红翼飞机 + The Wind Rises 字标），输入卡重绘为云海蓝玻璃胶囊，占位文案换成「風立ちぬ——让想法随风飘去」。
+dsh-kaze-tachinu-theme 把 DSH Web GUI 变成宫崎骏《起风了》的模样：一张菜穗子在山坡上写生的电影壁纸垫底，全部界面表面换成半透明毛玻璃，交互色统一为天蓝（`#1C96B5`），侧边栏品牌与首页 hero 标题替换为自绘矢量徽标（红翼飞机 + The Wind Rises 字标），输入卡重绘为云海蓝玻璃胶囊，占位文案换成「風立ちぬ——让想法随风飘去」。
 
 它是一个标准的 dsh 插件包：一条 `dsh plugin` 命令装进 profile，随 DSH 启动常驻，不修改任何 DSH 源码；卸载后页面完全还原。
 
@@ -43,10 +43,6 @@ dsh-kaze-tachinu-theme 把 DSH Web GUI 变成宫崎骏《起风了》的模样�
 | 安装 | — | `dsh plugin --profile web add ...` 一条命令 |
 | 还原 | — | 卸载即完全还原 |
 
-<p align="center">
-  <img src="docs/screenshots/home-hero.png" alt="主页：居中大尺寸徽标" width="760">
-</p>
-
 ## 主题细节
 
 ### 天蓝玻璃拟态
@@ -58,11 +54,6 @@ dsh-kaze-tachinu-theme 把 DSH Web GUI 变成宫崎骏《起风了》的模样�
 - 壁纸由插件宿主半区以 `/kaze-tachinu/current.jpg` 路由提供（包内 `assets/current.jpg`），叠加一层轻微的深色渐变保证文字可读性；
 - 侧边栏展开态显示横向徽标（红翼飞机 + The Wind Rises 字标），折叠态显示纸飞机字母标记（两个 SVG 均为本仓库自绘原创矢量，由插件路由提供）；
 - 首页（hero）标题替换为居中大尺寸徽标。
-
-<p align="center">
-  <img src="docs/screenshots/sidebar.png" alt="侧边栏：展开态的品牌标识" width="123">
-  <img src="docs/screenshots/chat-main.png" alt="主界面：壁纸上的玻璃拟态会话视图" width="676">
-</p>
 
 ### 输入卡与占位文案
 
@@ -221,12 +212,6 @@ A: 确认命令里带 `--profile web`（装进了正确的 profile）；浏览�
 
 A: 静态安装的资产路径相对包内解析，正常不会发生。多为 profile 的 node_modules 被手动清理或链接损坏所致：重新执行一次安装命令即可修复。
 
-</details>
-
-<details>
-<summary><strong>占位文案没有变成主题台词？</strong></summary>
-
-A: 引擎会同步 Lexical 编辑器的 `data-placeholder` / `aria-label` 与其可见占位层（以及旧版 textarea 的 placeholder），文案按界面语言（CJK 检测）选择。仍不生效时请确认：装的是含客户端引擎的插件版，或经 dsh-market 安装的皮肤——手工投放的皮肤不带 hooks；个别桌面发行版只加载宿主半区时此类 DOM 级效果不生效，标准 DSH Web 客户端可完整生效。
 
 </details>
 
@@ -241,13 +226,6 @@ A: 先跑「抗哈希漂移设计」一节的标记探测：若 `kaze-scroll根 
 <summary><strong>DSH 升级后样式错乱 / 部分没生效？</strong></summary>
 
 A: 自 v2 起，消息滚动、底部渐隐与统计栏胶囊**不再依赖哈希类名**（运行时定位 + 安全回退，升级后最坏仅装饰缺失、不会滚不动）。仍依赖哈希类名的仅剩纯装饰区（首页 hero 徽标、侧边栏品牌、输入卡高亮/hint）——升级后这些可能需对照新版类名小修，token 层与稳定 data 属性样式不受影响。欢迎提 issue 附截图。
-
-</details>
-
-<details>
-<summary><strong>安装后 DSH 进入「启动修复」页？</strong></summary>
-
-A: 通常是插件浏览器半区在 apply 阶段抛错（历史上有过 `styleEl is not defined` 类问题）。处理：在修复页先「退出 DSH Desktop」，卸载该插件恢复正常模式，然后安装仓库**当前最新版**并彻底重启；本地 `file:` 安装请先同步仓库代码再重装。仍复现就把 `harness.log` 末尾发到 issue。
 
 </details>
 

@@ -190,13 +190,6 @@ Re-run the install command — usually a pruned or broken profile `node_modules`
 </details>
 
 <details>
-<summary><strong>Placeholder copy not themed?</strong></summary>
-
-The engine syncs the Lexical composer's `data-placeholder` / `aria-label` and its visible placeholder layer (plus legacy `<textarea placeholder>`), picking the copy by UI language (CJK detection). If it still does not change, make sure you installed the plugin (with its client engine) or a dsh-market skin — manually dropped skins have no hooks — and that your build runs the plugin's browser half; standard DSH Web clients get everything.
-
-</details>
-
-<details>
 <summary><strong>The chat won't scroll?</strong></summary>
 
 Run the marker probe above: if the three `data-kaze-*` counts are 0 while `conv-scroll=2`, an outdated client bundle is loaded — install the current repo version and fully restart. If the markers are 1/1/1 and it still won't scroll, open an issue with the console `[kaze] …` warnings.
@@ -211,9 +204,9 @@ Since v2 the scroll sink, bottom fade and stats pill are hash-free (runtime loca
 </details>
 
 <details>
-<summary><strong>DSH lands on the "startup repair" page after install?</strong></summary>
+<summary><strong>Light mode text hard to read?</strong></summary>
 
-Usually the browser half threw during apply (historically: `styleEl is not defined`). Exit DSH Desktop on the repair page, uninstall the plugin to restore normal mode, then install the **current** repo version and restart. For local `file:` installs, sync the repo first, then re-add. If it reproduces, attach the tail of `harness.log`.
+The theme is designed as dark glass over the wallpaper and shares one look across light/dark modes, so a dimmer feel in light mode is expected. You can brighten the glass tokens yourself (see Customize → Colors).
 
 </details>
 
