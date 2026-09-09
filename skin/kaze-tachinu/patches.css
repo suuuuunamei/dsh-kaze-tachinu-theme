@@ -56,30 +56,30 @@
   padding: 3px 14px !important;
   text-align: center !important;
   font-size: 11px !important;
-  color: rgba(159, 196, 232, 0.92) !important;
+  color: rgba(134, 201, 220, 0.92) !important;
   background: rgba(10, 14, 26, 0.55) !important;
-  border: 1px solid rgba(127, 181, 227, 0.18) !important;
+  border: 1px solid rgba(28, 150, 181, 0.18) !important;
   border-radius: 999px !important;
   backdrop-filter: blur(10px) saturate(130%) !important;
   -webkit-backdrop-filter: blur(10px) saturate(130%) !important;
 }
 [data-composer-seat] .FJxK0a_sep {
-  color: rgba(127, 181, 227, 0.42) !important;
+  color: rgba(28, 150, 181, 0.42) !important;
   margin: 0 6px !important;
 }
 
 /* ── Composer card: navy glass capsule ────────────────────────────── */
 [data-composer-card] {
-  background: rgba(23, 59, 108, 0.85) !important;
+  background: rgba(12, 66, 90, 0.85) !important;
   backdrop-filter: blur(20px) saturate(130%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(130%) !important;
-  border: 1px solid rgba(127, 181, 227, 0.45) !important;
+  border: 1px solid rgba(28, 150, 181, 0.45) !important;
   border-radius: 20px !important;
   box-shadow: none !important;
 }
 [data-composer-card] ::placeholder {
-  color: rgba(164, 198, 236, 0.62) !important;
-  -webkit-text-fill-color: rgba(164, 198, 236, 0.62) !important;
+  color: rgba(122, 205, 225, 0.62) !important;
+  -webkit-text-fill-color: rgba(122, 205, 225, 0.62) !important;
   opacity: 1 !important;
 }
 [data-composer-card] textarea {
@@ -125,7 +125,7 @@
 [data-composer-card] button {
   background: rgba(255, 255, 255, 0.12) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  color: #a9c6e6 !important;
+  color: #7fcfe2 !important;
 }
 [data-composer-card] button:hover {
   background: rgba(255, 255, 255, 0.2) !important;
@@ -134,10 +134,10 @@
   visibility: hidden !important;
 }
 [data-composer-seat] > * {
-  background: rgba(23, 59, 108, 0.85) !important;
+  background: rgba(12, 66, 90, 0.85) !important;
   backdrop-filter: blur(20px) saturate(130%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(130%) !important;
-  border: 1px solid rgba(127, 181, 227, 0.5) !important;
+  border: 1px solid rgba(28, 150, 181, 0.5) !important;
   border-radius: 20px !important;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35) !important;
   z-index: 100 !important;
@@ -149,11 +149,11 @@ div[role="menu"],
 div[role="dialog"][class*="popover"],
 div[class*="popover"],
 div[class*="dropdown-menu"] {
-  background: rgba(23, 59, 108, 0.94) !important;
-  background-color: rgba(23, 59, 108, 0.94) !important;
+  background: rgba(12, 66, 90, 0.94) !important;
+  background-color: rgba(12, 66, 90, 0.94) !important;
   backdrop-filter: blur(16px) saturate(130%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(130%) !important;
-  border: 1px solid rgba(127, 181, 227, 0.35) !important;
+  border: 1px solid rgba(28, 150, 181, 0.35) !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
   border-radius: 12px !important;
 }
@@ -250,7 +250,7 @@ div[role="menu"] > div {
 /* ── Unified glass scrollbars ─────────────────────────────────────── */
 * {
   scrollbar-width: thin !important;
-  scrollbar-color: rgba(127, 181, 227, 0.42) rgba(15, 23, 42, 0.35) !important;
+  scrollbar-color: rgba(28, 150, 181, 0.42) rgba(15, 23, 42, 0.35) !important;
 }
 *::-webkit-scrollbar {
   width: 10px !important;
@@ -261,13 +261,13 @@ div[role="menu"] > div {
   border-radius: 5px !important;
 }
 *::-webkit-scrollbar-thumb {
-  background: rgba(127, 181, 227, 0.42) !important;
+  background: rgba(28, 150, 181, 0.42) !important;
   border: 2px solid rgba(15, 23, 42, 0.55) !important;
   border-radius: 5px !important;
   background-clip: padding-box !important;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: rgba(127, 181, 227, 0.62) !important;
+  background: rgba(28, 150, 181, 0.62) !important;
   border: 2px solid rgba(15, 23, 42, 0.55) !important;
   border-radius: 5px !important;
   background-clip: padding-box !important;

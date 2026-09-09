@@ -7,7 +7,7 @@
   "version": "1.0.0",
   "author": "dsh-kaze-tachinu-theme contributors",
   "tagline": "天蓝玻璃拟态 · 晴空电影壁纸 · いざ生きめやも",
-  "description": "《起风了》（風立ちぬ / The Wind Rises）主题皮肤：青空白云电影壁纸垫底，全局天蓝（#7FB5E3）毛玻璃拟态，深空半透明表面与低饱和天蓝描边贯穿亮暗两态；侧边栏与首页替换为自绘矢量徽标（展开 + 折叠两版），输入卡为云海蓝玻璃胶囊，占位文案换成「风起了，要努力活下去。」（台词映射见 hooks 说明）。视觉完整，行为增强（占位文案与滚动优化）需经市场安装启用。",
+  "description": "《起风了》（風立ちぬ / The Wind Rises）主题皮肤：青空白云电影壁纸垫底，全局天蓝（#1C96B5）毛玻璃拟态，深空半透明表面与低饱和天蓝描边贯穿亮暗两态；侧边栏与首页替换为自绘矢量徽标（展开 + 折叠两版），输入卡为云海蓝玻璃胶囊，占位文案换成「风起了，要努力活下去。」（台词映射见 hooks 说明）。视觉完整，行为增强（占位文案与滚动优化）需经市场安装启用。",
   "tags": [
     "kaze-tachinu",
     "the-wind-rises",
@@ -18,7 +18,7 @@
     "anime",
     "cinematic"
   ],
-  "accent": "#7FB5E3",
+  "accent": "#1C96B5",
   "order": 60,
   "license": "MIT (code) — artwork © Studio Ghibli / Toho (Kaze Tachinu, 2013), personal desktop use only",
   "sourceUrl": "https://github.com/Snamei/dsh-kaze-tachinu-theme",

@@ -8,12 +8,12 @@
 
 | Token | 值 | 用途 |
 | --- | --- | --- |
-| `--dsw-alias-brand-primary` | `#7FB5E3` | 品牌主色（天蓝） |
+| `--dsw-alias-brand-primary` | `#1C96B5` | 品牌主色（天蓝） |
 | `--dsw-alias-label-primary` | `#F8FAFC` | 主文字 |
 | `--dsw-alias-label-secondary` | `#CBD5E1` | 次级文字 |
-| `--dsw-alias-label-tertiary` | `#7FB5E3` | 三级文字（天蓝） |
+| `--dsw-alias-label-tertiary` | `#1C96B5` | 三级文字（天蓝） |
 | `--dsw-alias-label-caption` | `#94A3B8` | 说明文字 |
-| `--dsw-alias-label-primary-dimmed` | `#9FC4E8` | 弱化主文字（银蓝） |
+| `--dsw-alias-label-primary-dimmed` | `#86C9DC` | 弱化主文字（银蓝） |
 
 ## 表面与玻璃层
 
@@ -24,17 +24,17 @@
 | `--dsw-alias-bg-overlay` | `rgba(10,14,26,0.9)` | 遮罩层 |
 | `--dsw-specific-sidebar-fill` | `rgba(15,23,42,0.42)` | 侧边栏（更透，透出壁纸） |
 | `--dsw-specific-bubble` | `rgba(15,23,42,0.75)` | 消息气泡 |
-| `--dsw-specific-menu` | `rgba(23,59,108,0.94)` | 菜单/弹层（云海蓝） |
-| `--dsw-alias-border-l1/l2/l3` | `rgba(127,181,227,0.14/0.22/0.28)` | 三级边框（天蓝描边） |
+| `--dsw-specific-menu` | `rgba(12,66,90,0.94)` | 菜单/弹层（云海蓝） |
+| `--dsw-alias-border-l1/l2/l3` | `rgba(28,150,181,0.14/0.22/0.28)` | 三级边框（天蓝描边） |
 
 ## 交互态
 
 | Token | 值 | 用途 |
 | --- | --- | --- |
 | `--dsw-alias-interactive-bg-hover` | `rgba(255,255,255,0.08)` | 悬停 |
-| `--dsw-alias-interactive-bg-active` | `rgba(127,181,227,0.16)` | 激活（天蓝） |
-| `--dsw-alias-button-info-fill / hover` | `#7FB5E3` / `#6AA2D6` | 主要按钮 |
-| `--dsw-alias-button-ghost-active-border` | `rgba(127,181,227,0.5)` | 幽灵按钮激活描边 |
+| `--dsw-alias-interactive-bg-active` | `rgba(28,150,181,0.16)` | 激活（天蓝） |
+| `--dsw-alias-button-info-fill / hover` | `#1C96B5` / `#137F9B` | 主要按钮 |
+| `--dsw-alias-button-ghost-active-border` | `rgba(28,150,181,0.5)` | 幽灵按钮激活描边 |
 
 ## 状态色
 
@@ -43,21 +43,21 @@
 | `--dsw-alias-state-error-primary` | `#F87171` |
 | `--dsw-alias-state-success-primary` | `#7FE0C8` |
 | `--dsw-alias-state-warn-primary` | `#FBBF24` |
-| `--dsw-alias-state-business-primary` | `#7FB5E3` |
+| `--dsw-alias-state-business-primary` | `#1C96B5` |
 
 ## 代码与滚动条
 
 | Token | 值 | 用途 |
 | --- | --- | --- |
 | `--dsw-alias-markdown-code-block` | `rgba(13,17,23,0.55)` | 代码块底 |
-| `--dsw-alias-markdown-inline-code` | `rgba(127,181,227,0.12)` | 行内代码底 |
-| `--dsw-alias-scrollbar-bg-l2` | `rgba(127,181,227,0.32)` | 滚动条拇指 |
-| `--dsw-alias-scrollbar-hover-l2` | `rgba(127,181,227,0.55)` | 滚动条悬停 |
+| `--dsw-alias-markdown-inline-code` | `rgba(28,150,181,0.12)` | 行内代码底 |
+| `--dsw-alias-scrollbar-bg-l2` | `rgba(28,150,181,0.32)` | 滚动条拇指 |
+| `--dsw-alias-scrollbar-hover-l2` | `rgba(28,150,181,0.55)` | 滚动条悬停 |
 | `--dsw-shadow-lv2` | `0 8px 24px rgba(0,0,0,0.28)` | 二级阴影 |
 
 ## 颜色体系速查
 
-- 天蓝（主交互色）：`#7FB5E3` / `rgba(127,181,227,*)`
-- 银蓝（弱化文字/统计栏）：`#9FC4E8` / `rgba(159,196,232,*)`
-- 云海蓝（输入卡/菜单/弹层）：`rgba(23,59,108,*)`
+- 天蓝（主交互色）：`#1C96B5` / `rgba(28,150,181,*)`
+- 弱化文字（浅青）：`#86C9DC` / `rgba(134,201,220,*)`
+- 云海蓝（输入卡/菜单/弹层）：`rgba(12,66,90,*)`
 - 深空底（玻璃表面）：`rgba(15,23,42,*)`（slate-900）

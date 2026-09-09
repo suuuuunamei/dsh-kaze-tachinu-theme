@@ -27,7 +27,7 @@
 
 ## What it is
 
-dsh-kaze-tachinu-theme turns the DSH Web GUI into Miyazaki's *The Wind Rises*: a cinematic sky wallpaper (an aeroplane climbing through sunlit clouds) behind every surface, translucent frosted-glass panels, sky-blue (`#7FB5E3`) as the single interaction color, an original red-wing logo with a "The Wind Rises" wordmark in place of the DSH brand, a navy-glass composer card, and the placeholder copy swapped for themed film lines.
+dsh-kaze-tachinu-theme turns the DSH Web GUI into Miyazaki's *The Wind Rises*: a cinematic sky wallpaper (an aeroplane climbing through sunlit clouds) behind every surface, translucent frosted-glass panels, sky-blue (`#1C96B5`) as the single interaction color, an original red-wing logo with a "The Wind Rises" wordmark in place of the DSH brand, a navy-glass composer card, and the placeholder copy swapped for themed film lines.
 
 It is a standard dsh plugin package: one `dsh plugin` command installs it into the profile, it stays resident with DSH at startup, no DSH source is modified, and uninstalling fully restores the page.
 
