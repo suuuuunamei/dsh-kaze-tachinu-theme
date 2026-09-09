@@ -114,6 +114,67 @@ return {
     ctx.effect(() => disposePlaceholders);
     document.documentElement.setAttribute('data-kaze-tachinu-theme', 'on');
     ctx.effect(() => () => document.documentElement.removeAttribute('data-kaze-tachinu-theme'));
+    // ── 品牌徽标 / hero 大标：按语义类名后缀动态发现并注入（适配任意前端哈希前缀）──
+    let dynamicStyle = null;
+    let dynamicTimer = null;
+    const dynamicCss = () => {
+      const css = [];
+      const clsOf = (el) => (typeof el.className === 'string' ? el.className.split(/\s+/).filter(Boolean) : []);
+      const tok = (el, end) => clsOf(el).find((t) => t.endsWith(end));
+      const branded = [];
+      document.querySelectorAll('*').forEach((el) => {
+        const b = tok(el, '_brand');
+        if (b && el.querySelector('svg')) branded.push([el, b]);
+      });
+      for (const [, b] of branded) {
+        css.push(`html[data-kaze-tachinu-theme="on"] .${b}{display:inline-flex!important;align-items:center!important;justify-content:center!important;position:relative!important;overflow:hidden!important}`);
+        css.push(`html[data-kaze-tachinu-theme="on"] .${b} svg{display:none!important}`);
+        css.push(`html[data-kaze-tachinu-theme="on"] .${b}::before{content:''!important;display:inline-block!important;flex:none!important;width:150px!important;height:36px!important;background:url('/kaze-tachinu/logo.svg') center/contain no-repeat!important;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.3))!important}`);
+        css.push(`html[data-kaze-tachinu-theme="on"] .${b}::after{display:none!important}`);
+      }
+      const collapsed = [...document.querySelectorAll('*')].find((el) => tok(el, '_collapsed'));
+      if (collapsed) {
+        const tg = [...collapsed.querySelectorAll('*')].map((n) => [n, tok(n, '_toggle')]).find(([, t]) => t);
+        if (tg) {
+          css.push(`html[data-kaze-tachinu-theme="on"] .${tg[1]}{position:relative!important}`);
+          css.push(`html[data-kaze-tachinu-theme="on"] .${tg[1]} > *{display:none!important}`);
+          css.push(`html[data-kaze-tachinu-theme="on"] .${tg[1]}::before{content:''!important;display:block!important;width:24px!important;height:24px!important;background:url('/kaze-tachinu/logo-letter.svg') center/contain no-repeat!important;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.3))!important}`);
+        }
+      }
+      const hero = document.querySelector('[data-phase="hero"]');
+      const scope = hero || document;
+      const hideSet = new Set();
+      const headlineSet = new Set();
+      scope.querySelectorAll('*').forEach((el) => {
+        for (const t of clsOf(el)) {
+          if (t.endsWith('_fish') || t.endsWith('_previewBadge') || t.endsWith('_headlineText')) hideSet.add(t);
+          if (t.endsWith('_headline')) headlineSet.add(t);
+        }
+      });
+      for (const t of hideSet) css.push(`html[data-kaze-tachinu-theme="on"] .${t}{display:none!important}`);
+      for (const h of headlineSet) {
+        css.push(`html[data-kaze-tachinu-theme="on"] .${h}{display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;min-height:90px!important}`);
+        css.push(`html[data-kaze-tachinu-theme="on"] .${h}::before{content:''!important;display:inline-block!important;flex:none!important;width:360px!important;height:90px!important;background:url('/kaze-tachinu/logo.svg') center/contain no-repeat!important;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.35))!important}`);
+      }
+      if (!dynamicStyle) {
+        dynamicStyle = document.createElement('style');
+        dynamicStyle.id = 'kaze-tachinu-dynamic';
+        dynamicStyle.setAttribute('data-plugin', 'dsh-kaze-tachinu-theme');
+        document.head.append(dynamicStyle);
+      }
+      dynamicStyle.textContent = css.join('\n');
+    };
+    const dynamicObserver = new MutationObserver(() => {
+      clearTimeout(dynamicTimer);
+      dynamicTimer = setTimeout(dynamicCss, 200);
+    });
+    dynamicCss();
+    dynamicObserver.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['class'] });
+    ctx.effect(() => {
+      dynamicObserver.disconnect();
+      clearTimeout(dynamicTimer);
+      if (dynamicStyle) dynamicStyle.remove();
+    });
     // Wheel isolation: while the composer textarea has focus, only the input
     // card's own scroll container may consume the wheel. Defaults (InputBar
     // onWheel) forward the delta to the conversation scrollport when the
