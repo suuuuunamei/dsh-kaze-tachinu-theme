@@ -194,7 +194,7 @@ export default function defineSkinHooks() {
 
       // ── 1) Themed placeholder copy (unchanged behavior) ───────────────
       const RULES = [
-        { starts: '给智能体发消息', to: '风起了，要努力活下去。' },
+        { starts: '给智能体发消息', to: '風立ちぬ——让想法随风飘去' },
         { starts: 'Message the agent', to: '風立ちぬ。いざ生きめやも。' },
         { starts: '描述你想要构建的内容', to: '風立ちぬ——让想法随风飘去' },
         { starts: 'Describe what you want to build', to: 'Kaze Tachinu — let your thoughts ride the wind' },

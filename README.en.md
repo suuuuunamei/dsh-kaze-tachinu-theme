@@ -61,7 +61,7 @@ The composer is re-skinned as a navy glass capsule; placeholder copy is swapped 
 
 | UI language | Composer (unified box) | New-session (only on builds with a separate box) |
 | --- | --- | --- |
-| Chinese | `风起了，要努力活下去。` | `風立ちぬ——让想法随风飘去` |
+| Chinese | `風立ちぬ——让想法随风飘去` | `風立ちぬ——让想法随风飘去` |
 | English | `風立ちぬ。いざ生きめやも。` | `Kaze Tachinu — let your thoughts ride the wind` |
 
 ### Message-list scroll sink + bottom fade

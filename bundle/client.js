@@ -17,8 +17,8 @@ window.__ModuleLoader__.load({
     const apply = (ctx) => {
       const patchPlaceholders = () => {
         const RULES = [
-          { starts: '给智能体发消息', to: '风起了，要努力活下去。' },
-          { starts: 'Message the agent', to: '风起了，要努力活下去。' },
+          { starts: '给智能体发消息', to: '風立ちぬ——让想法随风飘去' },
+          { starts: 'Message the agent', to: '風立ちぬ——让想法随风飘去' },
           { starts: '描述你想要构建的内容', to: '風立ちぬ——让想法随风飘去' },
           { starts: 'Describe what you want to build', to: '風立ちぬ——让想法随风飘去' },
         ];
