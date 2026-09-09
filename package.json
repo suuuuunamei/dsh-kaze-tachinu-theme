@@ -14,7 +14,8 @@
     "plugin",
     "bundle",
     "assets",
-    "cordis.patch.yml"
+    "cordis.patch.yml",
+    "docs/screenshots"
   ],
   "dsh": {
     "bundle": {
