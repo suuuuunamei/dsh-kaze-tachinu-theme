@@ -1,6 +1,6 @@
 {
   "name": "dsh-kaze-tachinu-theme",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Kaze Tachinu (The Wind Rises) theme for DeepSeek Harness Web GUI — dynamic Cordis plugin source (host + client halves) plus an installable dsh bundle, with wallpaper/logo assets",
   "type": "module",
   "license": "MIT",
